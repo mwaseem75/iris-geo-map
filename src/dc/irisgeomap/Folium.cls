@@ -17,14 +17,14 @@ ClassMethod GetGeoDetails(addr As %String) As %Status [ Language = python ]
 
 // Functiont to print my location
 
-ClassMethod MyLocation() As %String [ Language = python ]
+ClassMethod MyLocation(where as %String = "Cambridge (MA)") As %String [ Language = python ]
 {
-	
 	from geopy.geocoders import Nominatim
 	geolocator = Nominatim(user_agent="geoapiExercises")
 
-	current_location = geolocator.geocode(None, exactly_one=True)
-		
+	current_location = geolocator.geocode(str(where), exactly_one=True)
+	
+	print('location = ',where)
 	print('latitude = {0}, longitude = {1}'.format(current_location.latitude, current_location.longitude))
 	
 	#lat, lon = (current_location.latitude, current_location.longitude)
