@@ -2,7 +2,6 @@ Class dc.IrisGeoMap.Folium Extends %SwizzleObject
 {
 
 // Function to print Latitude and Longitude 
-
 ClassMethod GetGeoDetails(addr As %String) As %Status [ Language = python ]
 {
     from geopy.geocoders import Nominatim
@@ -16,7 +15,6 @@ ClassMethod GetGeoDetails(addr As %String) As %Status [ Language = python ]
 }
 
 // Functiont to print my location
-
 ClassMethod MyLocation() As %String [ Language = python ]
 {
 	
@@ -27,12 +25,7 @@ ClassMethod MyLocation() As %String [ Language = python ]
 		
 	print('latitude = {0}, longitude = {1}'.format(current_location.latitude, current_location.longitude))
 	
-	#lat, lon = (current_location.latitude, current_location.longitude)
-	#location = geolocator.reverse(f"{lat}, {lon}", exactly_one=True)
-	#address = location.raw["address"]
-	#current_address = address.get("address27", "") + ", " + address.get("city", "") + ", " + address.get("state", "")
-	#print(current_address)
-}
+	}
 
 ClassMethod Home() As %String [ Language = python ]
 {
@@ -47,7 +40,6 @@ ClassMethod Home() As %String [ Language = python ]
 }
 
 // Display Layer control do view different layors
-
 ClassMethod Tiles() As %String [ Language = python ]
 {
 	import folium
@@ -71,7 +63,6 @@ ClassMethod Tiles() As %String [ Language = python ]
 }
 
 // Funtion to mark locations to the map
-
 ClassMethod Markers(dataset As %String) As %String [ Language = python ]
 {
 	import iris
@@ -87,15 +78,8 @@ ClassMethod Markers(dataset As %String) As %String [ Language = python ]
     #Calling embedded python iris.sql.exec class to get result set
 	resultSet = iris.sql.exec(mySql,dataset)
     #Get dataframe by calling resultset dataframe function 
-	dataframe = resultSet.dataframe()
+	data = resultSet.dataframe()
    	
-	# Make a data frame with dots to show on the map
-	#data = pd.DataFrame({
-	#   'lon':[-58, 2, 145, 30.32, -4.03, -73.57, 36.82, -38.5],
-	#  'lat':[-34, 49, -38, 59.93, 5.33, 45.52, -1.29, -12.97],
-	#   'name':['Buenos Aires', 'Paris', 'melbourne', 'St Petersbourg', 'Abidjan', 'Montreal', 'Nairobi', 'Salvador']	  
-	#}, dtype=str)
-	data = dataframe
 	# Make an empty map
 	m = folium.Map(location=[20,0], tiles="OpenStreetMap", zoom_start=3)
 	# add marker one by one on the map
