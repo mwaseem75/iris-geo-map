@@ -56,12 +56,15 @@ docker-compose exec iris iris session iris
 ```
 ###### Change Namespace
 ```
-ZN "USERS"
+ZN "USER"
 ```
-###### Run below command to import Synthetic Medical Data dataset by passing dataset ID(1) 
+###### Run below command find geo coordinate of a place of your choice
 ```
-do ##class(dc.irisgeomap.folium).MyLocation(1)
+do ##class(dc.irisgeomap.folium).MyLocation("Vienna")
 ```
+###### show the map portal in browser by this link
+http://localhost:52773/csp/irisgeomap/index.csp
+
 
 
 ## Thanks
