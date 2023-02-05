@@ -12,9 +12,11 @@ USER ${ISC_PACKAGE_MGRUSER}
 #COPY  Installer.cls .
 COPY src src
 COPY module.xml module.xml
+COPY requirements.txt requirements.txt
 COPY iris.script /tmp/iris.script
 
-RUN pip3 install -r requirements.txt && \
-    iris start IRIS \
+RUN iris start IRIS \
 	&& iris session IRIS < /tmp/iris.script \
     && iris stop IRIS quietly
+
+RUN pip3 install -r requirements.txt

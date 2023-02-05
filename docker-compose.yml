@@ -11,5 +11,3 @@ services:
       - 53773
     volumes:
       - ./:/irisdev/app
-      - ./src/csp:/opt/irisapp/src/csp
-
