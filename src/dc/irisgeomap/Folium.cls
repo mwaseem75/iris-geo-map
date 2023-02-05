@@ -88,8 +88,7 @@ ClassMethod Markers(dataset As %String) As %String [ Language = python ]
 	      location=[data.iloc[i]['latitude'], data.iloc[i]['longitude']],
 	      popup=data.iloc[i]['name'],
 	   ).add_to(m)
-	   print(data.iloc[i]['name'])
-   
+	     
 	
 	iframe = m.get_root()._repr_html_()
 
