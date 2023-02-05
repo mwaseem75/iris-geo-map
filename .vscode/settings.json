@@ -6,14 +6,14 @@
     "active": true,
     "username": "_SYSTEM",
     "password": "SYS",
-    "ns": "DATASETS",
+    "ns": "IrisGeoMap",
     "docker-compose": {
       "service": "iris",
       "internalPort": 52773
     },
     "links": {
       "Management Portal": "http://localhost:${port}/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=%25SYS",
-      "SQL": "http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=DATASETS",
+      "SQL": "http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen",
       "IRISGeoMap Application": "http://localhost:52773/csp/irisgeomap/index.csp"
     },
     "server": "default~iris"

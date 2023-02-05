@@ -9,8 +9,7 @@
       <Packaging>module</Packaging>
       <CSPApplication CookiePath="/csp/irisgeomap/" DefaultTimeout="900" DeployPath="{$cspdir}/IrisGeoMap" Description="Visualize Geopatial Data" MatchRoles=":{$dbrole}" Recurse="1" ServeFiles="1" ServeFilesTimeout="3600" Path="/src/csp" UnauthenticatedEnabled="1" Url="/csp/irisgeomap" UseSessionCookie="2"/>
       <SourcesRoot>src</SourcesRoot>
-      <Resource Name="dc.irisgeomap.PKG"/>
-      <FileCopy Name="src/python/" Target="${libdir}python/"/>          
+      <Resource Name="dc.irisgeomap.PKG"/>  
     </Module>
   </Document>
 </Export>
