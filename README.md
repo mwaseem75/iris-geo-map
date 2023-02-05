@@ -68,8 +68,7 @@ do ##class(dc.irisgeomap.folium).MyLocation(1)
 ```
 
 ###### To view app
-'''
 http://localhost:52773/csp/irisgeomap/index.csp
-'''
+
 
 ## Thanks
