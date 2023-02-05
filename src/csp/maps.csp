@@ -168,7 +168,7 @@
 			 <CSP:IF condition= "id = 1">		
 				#(..Tiles())#			
 			 <CSP:ELSEIF condition= "id = 2">
-			 	#(..Markers())#		
+			 	#(..Markers("DataSet1"))#		
 			 <CSP:ELSEIF condition= "id = 3">
 			 	#(..MarkerClustor())#		
 			 <CSP:ELSEIF condition= "id = 4">

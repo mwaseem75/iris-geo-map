@@ -72,26 +72,39 @@ ClassMethod Tiles() As %String [ Language = python ]
 
 // Funtion to mark locations to the map
 
-ClassMethod Markers() As %String [ Language = python ]
+ClassMethod Markers(dataset As %String) As %String [ Language = python ]
 {
+	import iris
 	import folium
 	# Import the pandas library
 	import pandas as pd
+    #Define sql statement
+	mySql = '''
+    SELECT latitude, longitude, name
+    FROM dc_IrisGeoMap.FoliumData where dataset = ?
+    '''
 
+    #Calling embedded python iris.sql.exec class to get result set
+	resultSet = iris.sql.exec(mySql,dataset)
+    #Get dataframe by calling resultset dataframe function 
+	dataframe = resultSet.dataframe()
+   	
 	# Make a data frame with dots to show on the map
-	data = pd.DataFrame({
-	   'lon':[-58, 2, 145, 30.32, -4.03, -73.57, 36.82, -38.5],
-	   'lat':[-34, 49, -38, 59.93, 5.33, 45.52, -1.29, -12.97],
-	   'name':['Buenos Aires', 'Paris', 'melbourne', 'St Petersbourg', 'Abidjan', 'Montreal', 'Nairobi', 'Salvador']	  
-	}, dtype=str)
+	#data = pd.DataFrame({
+	#   'lon':[-58, 2, 145, 30.32, -4.03, -73.57, 36.82, -38.5],
+	#  'lat':[-34, 49, -38, 59.93, 5.33, 45.52, -1.29, -12.97],
+	#   'name':['Buenos Aires', 'Paris', 'melbourne', 'St Petersbourg', 'Abidjan', 'Montreal', 'Nairobi', 'Salvador']	  
+	#}, dtype=str)
+	data = dataframe
 	# Make an empty map
 	m = folium.Map(location=[20,0], tiles="OpenStreetMap", zoom_start=3)
 	# add marker one by one on the map
 	for i in range(0,len(data)):
 	   folium.Marker(
-	      location=[data.iloc[i]['lat'], data.iloc[i]['lon']],
+	      location=[data.iloc[i]['latitude'], data.iloc[i]['longitude']],
 	      popup=data.iloc[i]['name'],
 	   ).add_to(m)
+	   print(data.iloc[i]['name'])
    
 	
 	iframe = m.get_root()._repr_html_()
@@ -425,6 +438,65 @@ ClassMethod BusLines() As %String [ Language = python ]
 	iframe = m.get_root()._repr_html_()
 
 	return iframe
+}
+
+//Intiate data
+ClassMethod InitData() 
+{
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = -58
+	set object.latitude = -34
+	set object.name = "Buenos Aires"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = 2
+	set object.latitude = 49
+	set object.name = "Paris"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = 145
+	set object.latitude = -38
+	set object.name = "melbourne"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = 30.32
+	set object.latitude = 59.93
+	set object.name = "St Petersbourg"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = -4.03
+	set object.latitude = 5.33
+	set object.name = "Abidjan"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = -73.57
+	set object.latitude = 45.52
+	set object.name = "Montreal"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = 36.82
+	set object.latitude = -1.29
+	set object.name = "Nairobi"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = -38.5
+	set object.latitude = -12.97
+	set object.name = "Salvador"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
+	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
+	set object.longitude = 73.328
+	set object.latitude = 31.471
+	set object.name = "Lahore"
+	set object.dataset = "DataSet1"
+	set status = object.%Save()
 }
 
 }
