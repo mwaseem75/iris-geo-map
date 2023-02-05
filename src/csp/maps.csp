@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>IRIS GEO MAP</title>
+	<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+	<link rel="icon" href="resources/img/icon.ico" type="image/x-icon" />
+
+	<!-- Fonts and icons -->
+	<script src="resources/js/webfont.min.js"></script>
+	<script type="text/javascript">
+		WebFont.load({
+			google: {
+				"families": ["Lato:300,400,700,900"]
+			},
+			custom: {
+				"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular",
+					"Font Awesome 5 Brands", "simple-line-icons"
+				],
+				urls: ['resources/css/fonts.min.css']
+			},
+			active: function () {
+				sessionStorage.fonts = true;
+			}
+		});
+		
+
+	</script>
+	 <script language="Cache" runat="Server">
+    	set id = $Get(%request.Data("id",1),0)  		
+	</script>	
+	<!-- CSS Files -->
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/atlantis.min.css">
+	
+	<style>
+		.hidden {
+			display: none;
+		}
+		.sessionLink {
+			cursor: pointer;
+			font-weight: bold;
+			color: #1A68D6 !important; 
+		}
+		#divMessagesDataGrid {
+			height: 500px;
+    		width: 100%;
+		}
+	</style>
+	<script src="resources/js/jquery.min.js"></script>
+	
+</head>
+
+<body>
+    <csp:class encoded=1 super="%CSP.Page,dc.IrisGeoMap.Folium">
+	<div class="wrapper">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="blue">
+				
+				<a href="/csp/irisgeomap/index.csp" class="logo">
+					<img src="resources/img/logo.jpg" alt="navbar brand" class="navbar-brand">
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+				</button>
+				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="icon-menu"></i>
+					</button>
+				</div>
+			</div>
+			<!-- End Logo Header -->
+
+			<!-- NavBar -->
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+				
+				<div class="container-fluid">
+					<ul class="nav nav-pills nav-primary">
+						<li class="nav-item">
+							<a class="nav-link active" href="/csp/irisgeomap/index.csp">Dashboard</a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link active" href="/csp/sys/%25CSP.Portal.Home.zen" target="_blank">Management Portal</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=PAGE_epython" target="_blank">Embedded Python Docs</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="https://python-visualization.github.io/folium/" target="_blank">Folium Docs</a>
+						</li>			
+												</ul>
+					
+				</div>
+			</nav>
+			<!-- End Navbar -->
+		</div>
+		<!-- Sidebar -->
+		<div class="sidebar sidebar-style-2">			
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">					
+				  <ul class="nav nav-primary">									
+						<li class="nav-item">							
+							
+						
+								<a href="/csp/irisgeomap/maps.csp?id=1">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Map Tile Layors</p>								
+								</a>
+								
+								<a href="/csp/irisgeomap/maps.csp?id=2">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Mark Locations</p>								
+								</a>
+								
+								<a href="/csp/irisgeomap/maps.csp?id=3">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Markers Clustors</p>								
+								</a>			
+								
+								<a href="/csp/irisgeomap/maps.csp?id=4">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Maps Draw</p>								
+								</a>
+								
+									<a href="/csp/irisgeomap/maps.csp?id=7">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Draw Bus Lines</p>								
+								</a>
+								
+								
+								
+								<a href="/csp/irisgeomap/maps.csp?id=6">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Weather Data</p>								
+								</a>
+							
+								<a href="/csp/irisgeomap/maps.csp?id=5">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Mini Map</p>								
+								</a>
+								
+								<a href="/csp/irisgeomap/maps.csp?id=8">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Mouse Position</p>								
+								</a>
+								
+								<a href="/csp/irisgeomap/maps.csp?id=9">
+									<i style="color:#007bff" class="fas fa-map-marker-alt dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Float Image</p>								
+								</a>
+								
+												
+						</li>
+		
+					</ul>	
+				</div>
+			</div>
+		</div>
+		<!-- Main Panel -->
+		<div class="main-panel">
+			<div class="content">
+			 <div class="page-inner">
+			 <CSP:IF condition= "id = 1">		
+				#(..Tiles())#			
+			 <CSP:ELSEIF condition= "id = 2">
+			 	#(..Markers())#		
+			 <CSP:ELSEIF condition= "id = 3">
+			 	#(..MarkerClustor())#		
+			 <CSP:ELSEIF condition= "id = 4">
+			 	#(..MapDraw())#		
+			 <CSP:ELSEIF condition= "id = 5">
+			 	#(..MiniMap())#		
+			 <CSP:ELSEIF condition= "id = 6">
+			 	#(..WeatherData())#		
+			 <CSP:ELSEIF condition= "id = 7">
+			 	#(..BusLines())#		
+			 <CSP:ELSEIF condition= "id = 8">
+			 	#(..MousePosition())#		
+			 <CSP:ELSEIF condition= "id = 9">
+			 	#(..FloatImage())#		
+			 <CSP:ELSE>
+			 <h3>Invalid Option</h3>
+			 </csp:if>		
+						
+			</div>
+			</div>
+					<!-- Customized Card -->
+					
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+							
+									2023, IRIS GEO MAPS
+							
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+								
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+								
+								</a>
+							</li>
+						</ul>
+					</nav>
+					
+				</div>
+			</footer>
+		</div>				
+	</div>
+		
+	</div>
+	</div>
+	<!--   Core JS Files   -->
+	<!-- <script src="resources/plugins/atlantis-lite/assets/js/core/jquery.3.2.1.min.js"></script> -->
+	<script src="resources/js/popper.min.js"></script> 
+	<script src="resources/js/bootstrap.min.js"></script> 
+	<!-- jQuery UI -->
+	<script src="resources/js/jquery-ui.min.js"></script>
+	<script src="resources/js/jquery.ui.touch-punch.min.js"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="resources/js/jquery.scrollbar.min.js"></script>
+	<!-- Datatables -->
+	
+	<!-- Atlantis JS -->
+	<script src="resources/js/atlantis.min.js"></script>
+
+</body>
+</html>

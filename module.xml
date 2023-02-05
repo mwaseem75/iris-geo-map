@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+  <Document name="iris-geo-map.ZPM">
+    <Module>
+      <Name>iris-geo-map</Name>
+      <Version>1.0.0</Version>
+      <Description>IRIS class to visualize geopatial data </Description>
+      <Keywords>Embedded Python,Folium</Keywords>
+      <Packaging>module</Packaging>
+      <CSPApplication CookiePath="/csp/irisgeomap/" DefaultTimeout="900" DeployPath="{$cspdir}/IrisGeoMap" Description="Visualize Geopatial Data" MatchRoles=":{$dbrole}" Recurse="1" ServeFiles="1" ServeFilesTimeout="3600" SourcePath="/IrisGeoMap" UnauthenticatedEnabled="1" Url="/csp/irisgeomap" UseSessionCookie="2"/>
+      <SourcesRoot>src</SourcesRoot>
+      <Resource Name="dc.IrisGeoMap.PKG"/>
+      <FileCopy Name="python/" Target="${libdir}python/"/>
+            
+    </Module>
+  </Document>
+</Export>
