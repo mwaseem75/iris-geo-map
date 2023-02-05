@@ -222,7 +222,7 @@
 							<div class="card card-white">
 								<div class="card-header">
 									<h5 class="fw-bold">Weather Data</h5>	
-								<a href="/csp/irisgeomap/maps.csp?id=6"><img src="resources/img/Weatherdata.jpg" class="img-fluid"></a>
+								<a href="/csp/irisgeomap/maps.csp?id=6"><img src="resources/img/weatherdata.jpg" class="img-fluid"></a>
 								</div>
 											
 							</div>
