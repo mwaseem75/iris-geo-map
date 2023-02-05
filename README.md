@@ -6,7 +6,8 @@ The library has a number of built-in tilesets from OpenStreetMap, Mapbox, and St
 
 
 ## Application Layout
-![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/18219467/216848987-1f9eb3c9-2ed2-4789-b008-8689baac78b5.gif)
+![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/18219467/216850208-95f9c854-0066-43dd-a1aa-3dd52cc55935.gif)
+
 
 
 ## Recommendation 
