@@ -7,12 +7,16 @@ folium makes it easy to visualize data that’s been manipulated in Python on an
 
 ## Features
 * Get geographic data details
-* Mark particular location/locations to the Map
-* Save Interactive Maps to HTML 
-* Creating and adding interactive maps to CSP application
-* Multiple layers to the map and control on the visibility.
-* Display linear elements on a map using PolyLine
-* Third-party add-ons to extend the functionality
+* Mark particular location/locations and Save Interactive Maps to HTML 
+* Map Tile Layors (To display different layors we can use with the Map)
+* Mark Locations (Mark locations on the map based on SQL data)
+* Markers Clustors (Combine Locations while zooming out) 
+* Map Draw (Mark locations, Lines, View distance between two locations)
+* Draw Bus Lines (Draw Bus lines by using polyline functionality)
+* Weather Data (Weather deta by using folium raster_layers)
+* Mini Map (Display mini map at the bottom)
+* Mouse Positoin (Display latitude,longitude values with the mouse movement)
+* Float Image (Display float image to the Map) 
 
 ## Application Layout
 ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/18219467/216850208-95f9c854-0066-43dd-a1aa-3dd52cc55935.gif)
@@ -27,7 +31,7 @@ https://irisgeomap.demo.community.intersystems.com/csp/irisgeomap/index.csp by u
 * [Embedded Python](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=PAGE_epython).
 * [Folium Python Liabrary](https://python-visualization.github.io/folium/).
 
-## How to Run
+## How to Run (Docker)
 
 To start coding with this repo, you do the following:
 
@@ -52,33 +56,46 @@ docker-compose up -d
 ```
 zpm "install iris-geo-map"
 ```
-## Repo Contents   
-* Dockerfile, docker-compose.yml, and Installer.cls to create container
-* iris.script, contains script to execute during container initialization 
-* /src with source files 
-* /.vscode/settings.json for automatic server connections when opened in VS Code.
-
-## Requirements:  
-* [Docker desktop]( https://www.docker.com/products/docker-desktop)
-* Get the latest InterSystems IRIS for Health image for use in the Dockerfile: https://hub.docker.com/_/intersystems-iris-for-health  
 
 ## Getting Started 
-## Importing DataSet from Terminal
-###### Connect to IRIS Terminal
+#### Get geographic data details
+To get geographic data details we will use GetGeoDetails() function of dc.IrisGeoMap.Folium class. Function requies one address parameter.
+Let invoke the function and get the details of "Cambridge MA 02142"
+###### Connect to IRIS Terminal and run below code
 ```
-docker-compose exec iris iris session iris
+do ##class(dc.IrisGeoMap.Folium).GetGeoDetails("Cambridge MA 02142")
 ```
-###### Change Namespace
-```
-ZN "USERS"
-```
-###### Run below command to import Synthetic Medical Data dataset by passing dataset ID(1) 
-```
-do ##class(dc.irisgeomap.folium).MyLocation(1)
-```
+Below is the output
 
-###### To view app
-http://localhost:52773/csp/irisgeomap/index.csp
+![image](https://user-images.githubusercontent.com/18219467/216948111-94ec04a3-4b65-4c29-b5a0-a6a4fe367009.png)
+
+#### Mark some locations and save to HTML file
+Let us Mark some locations and save it to HTML file.
+we will use MarkGeoDetails() function of dc.IrisGeoMap.Folium class. 
+Function requies two parameter:
+1-location/locations(We can pass multiple location by adding "," in between)
+2-HTML file path
+Let us run below command to mark Cambridge MA 02142,NY,London,UAE,Jeddah,Lahore and Glasgow on the Map and save it as "irisgeomap_locations.html" file
+```
+do ##class(dc.IrisGeoMap.Folium).MarkGeoDetails("Cambridge MA 02142,NY,London,UAE,Jeddah,Lahore,Glasgow","d:\irisgeomap_locations.html")
+```
+Below is the view of irisgeomap_locations.html file
+![image](https://user-images.githubusercontent.com/18219467/216950085-c5f4d2ed-f7bf-41e0-ad85-7e83a3e83fa0.png)
+
+#### CSP application
+Navigate to [http://localhost:52773/csp/irisgeomap/index.csp](http://localhost:52773/csp/irisgeomap/index.csp) by using SuperUser | SYS
+![image](https://user-images.githubusercontent.com/18219467/216952968-b7d8f1b0-8dc5-4ea5-95c2-f3c867f7ad5b.png)
+
+Web application demonstrate below functionlity:
+* Map Tile Layors (To display different layors we can use with the Map)
+* Mark Locations (Mark locations on the map based on SQL data)
+* Markers Clustors (Combine Locations while zooming out) 
+* Map Draw (Mark locations, Lines, View distance between two locations)
+* Draw Bus Lines (Draw Bus lines by using polyline functionality)
+* Weather Data (Weather deta by using folium raster_layers)
+* Mini Map (Display mini map at the bottom)
+* Mouse Positoin (Display latitude,longitude values with the mouse movement)
+* Float Image (Display float image to the Map) 
 
 
 ## Thanks
