@@ -1,5 +1,5 @@
 ## Summary
-IRIS Geo Map application is a tool to visualize geographic data by generating interative maps by using [Embedded Python](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=PAGE_epython) functionality.
+IRIS Geo Map application is a tool to visualize geographic data by generating interactive maps by using [Embedded Python](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=PAGE_epython) functionality.
 Application is using [**Folium**](https://python-visualization.github.io/folium/) Python library
 
 folium builds on the data wrangling strengths of the Python ecosystem and the mapping strengths of the leaflet.js library. Manipulate your data in Python, then visualize it in on a Leaflet map via folium.
@@ -13,7 +13,7 @@ folium makes it easy to visualize data that’s been manipulated in Python on an
 * Markers Clustors (Combine Locations while zooming out) 
 * Map Draw (Mark locations, Lines, View distance between two locations)
 * Draw Bus Lines (Draw Bus lines by using polyline functionality)
-* Weather Data (Weather deta by using folium raster_layers)
+* Weather Data (Weather data by using folium raster_layers)
 * Mini Map (Display mini map at the bottom)
 * Mouse Positoin (Display latitude,longitude values with the mouse movement)
 * Float Image (Display float image to the Map) 
