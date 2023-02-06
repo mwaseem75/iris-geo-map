@@ -3,7 +3,7 @@
   <Document name="iris-geo-map.ZPM">
     <Module>
       <Name>iris-geo-map</Name>
-      <Version>1.0.0</Version>
+      <Version>1.0.1</Version>
       <Description>IRIS class to visualize geopatial data </Description>
       <Keywords>Embedded Python,Folium</Keywords>
       <Packaging>module</Packaging>
