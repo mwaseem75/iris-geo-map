@@ -1,8 +1,18 @@
 ## Summary
+IRIS Geo Map application is a tool to visualize geographic data by generating interative maps by using [Embedded Python](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=PAGE_epython) functionality.
+Application is using [**Folium**](https://python-visualization.github.io/folium/) Python library
+
 folium builds on the data wrangling strengths of the Python ecosystem and the mapping strengths of the leaflet.js library. Manipulate your data in Python, then visualize it in on a Leaflet map via folium.
 folium makes it easy to visualize data that’s been manipulated in Python on an interactive leaflet map. It enables both the binding of data to a map for choropleth visualizations as well as passing rich vector/raster/HTML visualizations as markers on the map.
 
-The library has a number of built-in tilesets from OpenStreetMap, Mapbox, and Stamen, and supports custom tilesets with Mapbox or Cloudmade API keys. folium supports both Image, Video, GeoJSON and TopoJSON overlays.
+## Features
+* Get geographic data details
+* Mark particular location/locations to the Map
+* Save Interactive Maps to HTML 
+* Creating and adding interactive maps to CSP application
+* Multiple layers to the map and control on the visibility.
+* Display linear elements on a map using PolyLine
+* Third-party add-ons to extend the functionality
 
 ## Application Layout
 ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/18219467/216850208-95f9c854-0066-43dd-a1aa-3dd52cc55935.gif)
