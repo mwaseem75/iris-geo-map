@@ -6,11 +6,11 @@
       <Version>1.0.2</Version>
       <Description>IRIS class to visualize geopatial data </Description>
       <Keywords>Embedded Python,Folium</Keywords>
-      <Packaging>module</Packaging>
-      <CSPApplication CookiePath="/csp/irisgeomap/" DefaultTimeout="900" DeployPath="{$cspdir}/IrisGeoMap" Description="Visualize Geopatial Data" MatchRoles=":{$dbrole}" Recurse="1" ServeFiles="1" ServeFilesTimeout="3600" Path="/src/csp"  PasswordAuthEnabled="1" UnauthenticatedEnabled="0"  Url="/csp/irisgeomap" UseSessionCookie="2"/>
+      <Packaging>module</Packaging>      
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="dc.IrisGeoMap.PKG"/>  
       <Invoke Class="dc.IrisGeoMap.Folium" Method="InitData"></Invoke>
+      <CSPApplication CookiePath="/csp/irisgeomap/" DefaultTimeout="900" DeployPath="{$cspdir}/IrisGeoMap" Description="Visualize Geopatial Data" MatchRoles=":{$dbrole}" Recurse="1" ServeFiles="1" ServeFilesTimeout="3600" Path="/src/csp"  PasswordAuthEnabled="1" UnauthenticatedEnabled="0"  Url="/csp/irisgeomap" UseSessionCookie="2"/>
     </Module>
   </Document>
 </Export>
