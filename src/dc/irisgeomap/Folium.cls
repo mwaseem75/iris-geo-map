@@ -1,7 +1,7 @@
 Class dc.IrisGeoMap.Folium Extends %SwizzleObject
 {
 
-// Function to print Latitude and Longitude 
+// Function to print Latitude, Longitude and address details 
 ClassMethod GetGeoDetails(addr As %String) [ Language = python ]
 {
     from geopy.geocoders import Nominatim
