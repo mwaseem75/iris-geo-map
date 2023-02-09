@@ -2,6 +2,7 @@ Class dc.IrisGeoMap.Folium Extends %SwizzleObject
 {
 
 // Function to print Latitude, Longitude and address details 
+
 ClassMethod GetGeoDetails(addr As %String) [ Language = python ]
 {
     from geopy.geocoders import Nominatim
@@ -17,18 +18,21 @@ ClassMethod GetGeoDetails(addr As %String) [ Language = python ]
     	print("Not able to find location")
 }
 
-//function to generate and mark locations and save then in HTML file
+// function to generate and mark locations and save then in HTML file
+
 ClassMethod MarkGeoDetails(addr As %String, filepath As %String) As %Status [ Language = python ]
 {
     import folium
     from geopy.geocoders import Nominatim
     
-    geolocator = Nominatim(user_agent="kaggle_learn")
+    geolocator = Nominatim(user_agent="IrisGeoMap")
     #split address in order to mark on the map
     locs = addr.split(",")
     if len(locs) == 0:
     	print("Please enter address")
     elif len(locs) == 1:
+    	location = geolocator.geocode(locs[0])
+    	point = location.point
     	m = folium.Map(location=[point.latitude,point.longitude], tiles="OpenStreetMap", zoom_start=10)
     else:
     	m = folium.Map(location=[20,0], tiles="OpenStreetMap", zoom_start=3)
@@ -66,7 +70,39 @@ ClassMethod MarkGeoDetails(addr As %String, filepath As %String) As %Status [ La
 }
 
 
+ClassMethod DrawGeoDetails(addr As %String) As %String [ Language = python ]
+{
+    import folium
+    from geopy.geocoders import Nominatim
+    
+    geolocator = Nominatim(user_agent="IrisGeoMap")
+    #split address in order to mark on the map
+    locs = addr.split(",")
+    if len(locs) == 0:
+    	addr=""
+    elif len(locs) == 1:
+    	location = geolocator.geocode(locs[0])
+    	point = location.point
+    	m = folium.Map(location=[point.latitude,point.longitude], tiles="OpenStreetMap", zoom_start=10)
+    else:
+    	m = folium.Map(location=[20,0], tiles="OpenStreetMap", zoom_start=3)
+    
+    for loc in locs:
+    	try:
+    		location = geolocator.geocode(loc)
+    		point = location.point
+    		folium.Marker(
+	    			location=[point.latitude,point.longitude],
+	    	  		popup=addr,
+	    		).add_to(m)    		
+    	except:
+    		addr="" 
+    		  
+    iframe = m.get_root()._repr_html_()
+    return iframe
+}
 // Display Layer control do view different layors
+
 ClassMethod Tiles() As %String [ Language = python ]
 {
 	import folium
@@ -90,6 +126,7 @@ ClassMethod Tiles() As %String [ Language = python ]
 }
 
 // Funtion to mark locations to the map based on sql data
+
 ClassMethod Markers(dataset As %String) As %String [ Language = python ]
 {
 	import iris
@@ -210,7 +247,7 @@ ClassMethod MarkerClustor() As %String [ Language = python ]
 	return iframe
 }
 
-//Function to display latitude,longitude values 
+// Function to display latitude,longitude values 
 
 ClassMethod MousePosition() As %String [ Language = python ]
 {
@@ -237,7 +274,8 @@ ClassMethod MousePosition() As %String [ Language = python ]
 	return iframe
 }
 
-//Function to draw weather data
+// Function to draw weather data
+
 ClassMethod WeatherData() As %String [ Language = python ]
 {
 	import folium
@@ -284,7 +322,9 @@ ClassMethod WeatherData() As %String [ Language = python ]
 
 	return iframe
 }
-//Function to draw Lines on the Map
+
+// Function to draw Lines on the Map
+
 ClassMethod BusLines() As %String [ Language = python ]
 {
 	import folium
@@ -443,8 +483,9 @@ ClassMethod BusLines() As %String [ Language = python ]
 	return iframe
 }
 
-//Intiate data
-ClassMethod InitData() 
+// Intiate data
+
+ClassMethod InitData()
 {
 	set object = ##class(dc.IrisGeoMap.FoliumData).%New()
 	set object.longitude = -58
