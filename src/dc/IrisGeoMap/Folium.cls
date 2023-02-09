@@ -76,7 +76,7 @@ ClassMethod DrawGeoDetails(addr As %String) As %String [ Language = python ]
     from geopy.geocoders import Nominatim
     
     geolocator = Nominatim(user_agent="IrisGeoMap")
-    #split address in order to mark on the map
+    #split address in order to mark on the map.
     locs = addr.split(",")
     if len(locs) == 0:
     	addr=""
@@ -93,7 +93,7 @@ ClassMethod DrawGeoDetails(addr As %String) As %String [ Language = python ]
     		point = location.point
     		folium.Marker(
 	    			location=[point.latitude,point.longitude],
-	    	  		popup=addr,
+	    	  		popup=loc,
 	    		).add_to(m)    		
     	except:
     		addr="" 
